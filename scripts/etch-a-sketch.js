@@ -1,5 +1,7 @@
 let gridSize = 16;
 let randomizer = 100;
+let maxSize = 60;
+let minSize = 4;
 let colorChoice = [80,40,210]
 let blankColor = "#263138";
 
@@ -17,12 +19,12 @@ sketchGrid.classList.add('sketch-grid');
 gameArea.insertBefore(sketchGrid, credit);
 clearBtn.addEventListener('click', clearArea);
 sizeDown.addEventListener('click', () => {
-  if (gridSize > 4) {
+  if (gridSize > minSize) {
     newSize(-2);
   }
 });
 sizeUp.addEventListener('click', () => {
-  if (gridSize < 30) {
+  if (gridSize < maxSize) {
     newSize(2);
   }
 });
@@ -82,12 +84,12 @@ function newSize(increment) {
   gridSize += increment;
   sketchGrid.style["grid-template-columns"] = `repeat(${gridSize}, 1fr)`;
   drawArea();
-  if (gridSize == 30) {
+  if (gridSize == maxSize) {
     sizeUp.classList.add('max-size');
   } else if (increment < 0 && sizeUp.classList.contains('max-size')) {
     sizeUp.classList.remove('max-size');
   }
-  if (gridSize == 4) {
+  if (gridSize == minSize) {
     sizeDown.classList.add('max-size');
   } else if (increment > 0 && sizeDown.classList.contains('max-size')) {
     sizeDown.classList.remove('max-size');

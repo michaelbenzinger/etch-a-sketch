@@ -87,9 +87,6 @@ button {
 .sketched {
   transition: background-color .1s;
 }
-#credit {
-
-}
 #credit a {
   transition: color 1s;
   text-decoration: none;
